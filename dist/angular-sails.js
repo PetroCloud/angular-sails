@@ -71,7 +71,7 @@ angular.module('ngSails', ['ng']);
         // like https://docs.angularjs.org/api/ng/service/$http#interceptors
         // but with sails.io arguments
         var interceptorFactories = this.interceptors = [
-            /*function($injectables) {
+          /*function($injectables) {
                 return {
                     request: function(config) {},
                     response: function(response) {},
@@ -83,7 +83,7 @@ angular.module('ngSails', ['ng']);
 
         /*@ngInject*/
         this.$get = ["$q", "$injector", "$rootScope", "$log", "$timeout", function($q, $injector, $rootScope, $log, $timeout) {
-            var socket = (io.sails && io.sails.connect || io.connect)(provider.url, provider.config);
+            var socket = window.io.sails.connect(provider.url, provider.config);
 
             socket.connect = function(opts){
                 if(!socket.isConnected()){
