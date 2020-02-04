@@ -1,10 +1,11 @@
-(function (angular, io) {
+(function (angular) {
 'use strict'/*global angular */
 angular.module('ngSails', ['ng']);
 
 /*global angular, io */
-(function(angular, io) {
+(function(angular) {
     'use strict';
+    var io = window.io;
     if(io.sails){
       io.sails.autoConnect = false;
     }
@@ -309,5 +310,5 @@ angular.module('ngSails', ['ng']);
         }];
         this.$get.$inject = ["$q", "$injector", "$rootScope", "$log", "$timeout"];
     });
-}(angular, io));
-}(angular, io));
+}(angular));
+}(angular));

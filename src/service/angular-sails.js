@@ -1,6 +1,7 @@
-/*global angular, io */
-(function(angular, io) {
+/*global angular*/
+(function(angular) {
     'use strict';
+    var io = window.io;
     if(io.sails){
       io.sails.autoConnect = false;
     }
@@ -79,7 +80,7 @@
 
         /*@ngInject*/
         this.$get = function($q, $injector, $rootScope, $log, $timeout) {
-            var socket = (io.sails && io.sails.connect || io.connect)(provider.url, provider.config);
+            var socket = window.io.socket || window.io.sails.connect(provider.url, provider.config);
 
             socket.connect = function(opts){
                 if(!socket.isConnected()){
@@ -304,4 +305,4 @@
             return socket;
         };
     });
-}(angular, io));
+}(angular));
